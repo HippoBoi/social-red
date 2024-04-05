@@ -1,4 +1,4 @@
-import logo from '../GameHub Resources/Logo/logo.webp';
+import logo from '../assets/Logo/logo.webp';
 import { HStack, Image, Text } from '@chakra-ui/react';
 
 const NavBar = () => {
