@@ -12,7 +12,7 @@ interface Props {
 
 const PostCard = ({ post, user }: Props) => {
     return (
-        <Card borderRadius={10}>
+        <Card width={"350px"} borderRadius={10}>
             <HStack justifyContent={'space-between'} padding={2}>
                 <Image src={logo} boxSize={'40px'}></Image>
                 <UserIconList user={user.username}></UserIconList>

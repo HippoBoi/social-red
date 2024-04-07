@@ -1,5 +1,6 @@
 import { Badge, HStack } from '@chakra-ui/react';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import { MdOutlineThumbsUpDown } from "react-icons/md";
 import React from 'react'
 
 interface Props {
@@ -13,8 +14,7 @@ const LikeRatio = ({ likes }: Props) => {
 
     return (
         <HStack>
-            <FaRegThumbsUp></FaRegThumbsUp>
-            <FaRegThumbsDown></FaRegThumbsDown>
+            <FaRegThumbsUp />
             <Badge colorScheme={convertLikeRatio() > 69 ? 'green' : convertLikeRatio() > 39 ? 'yellow' : 'red'}>
                 {convertLikeRatio() + "%"}
             </Badge>
