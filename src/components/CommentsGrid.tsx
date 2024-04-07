@@ -1,27 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import apiClient from '../services/api-client';
 import { Text } from '@chakra-ui/react';
-
-interface Post {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-};
+import usePosts from '../hooks/usePosts';
 
 const CommentsGrid = () => {
-    const [posts, postSet] = useState<Post[]>([]);
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        apiClient.get<Post[]>("/posts")
-            .then((res) => {
-                postSet(res.data)
-            })
-            .catch((err) => {
-                setError(err.message);
-            });
-    }, []);
+    const {posts, error} = usePosts();
 
     return (
         <>
