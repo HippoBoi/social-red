@@ -1,7 +1,7 @@
 import './App.css'
 import { Grid, GridItem, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
-import CommentsGrid from './components/CommentsGrid';
+import CommentsGrid from './components/PostsGrid';
 
 function App() {
     return (
