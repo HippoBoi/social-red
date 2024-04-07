@@ -3,6 +3,7 @@ import usePosts from '../hooks/usePosts';
 import PostCard from './PostCard';
 import useUsers from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
+import PostContainer from './PostContainer';
 
 const PostsGrid = () => {
     const {posts, error, loading} = usePosts();
@@ -21,7 +22,11 @@ const PostsGrid = () => {
         <>
             {error && <Text>{error}</Text>}
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3}} spacing={7} padding={'70px'}>
-                {loading && skeletons.map((skeleton) => <PostSkeleton key={skeleton}></PostSkeleton>)}
+                {loading && skeletons.map((skeleton) => (
+                    <PostContainer>
+                        <PostSkeleton key={skeleton}></PostSkeleton>
+                    </PostContainer>
+                ))}
 
                 {posts.map((post) => (
                     <PostCard key={post.id} post={post} user={getRandomUser()}></PostCard>

@@ -4,7 +4,7 @@ import UserIconList from './UserIconList'
 
 const PostSkeleton = () => {
     return (
-        <Card borderRadius={10} width={'350px'} overflow={"hidden"}>
+        <Card>
             <Skeleton height={'290px'}></Skeleton>
         </Card>
     )
