@@ -1,10 +1,8 @@
-import { Card, HStack, Image, Text, Heading, CardBody, Skeleton, SkeletonText } from '@chakra-ui/react'
-import React from 'react'
-import UserIconList from './UserIconList'
+import { Card, Skeleton } from '@chakra-ui/react'
 
 const PostSkeleton = () => {
     return (
-        <Card>
+        <Card borderRadius={10} overflow={"hidden"}>
             <Skeleton height={'290px'}></Skeleton>
         </Card>
     )

@@ -1,10 +1,22 @@
 import './App.css'
 import { Grid, GridItem, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
-import CommentsGrid from './components/PostsGrid';
+import PostsGrid from './components/PostsGrid';
 import UsersList from './components/UsersList';
+import { useState } from 'react';
 
 function App() {
+    const [curUser, setCurUser] = useState("");
+
+    const changeCurUser = (userName: string) => {
+        if (curUser !== userName) {
+            setCurUser(userName);
+        }
+        else {
+            setCurUser("");
+        }
+    }
+
     return (
         <Grid 
             templateAreas={{
@@ -21,12 +33,12 @@ function App() {
 
             <Show above='md'>
                 <GridItem area={"aside"} padding={5}>
-                    <UsersList></UsersList>
+                    <UsersList onClickUser={(userName) => changeCurUser(userName)}></UsersList>
                 </GridItem>
             </Show>
 
             <GridItem area={"main"}>
-                <CommentsGrid></CommentsGrid>
+                <PostsGrid curUserName={curUser}></PostsGrid>
             </GridItem>
         </Grid>
     );

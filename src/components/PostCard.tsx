@@ -8,9 +8,14 @@ import LikeRatio from './LikeRatio';
 interface Props {
     post: Post;
     user: User;
+    curUserName: string;
 }
 
-const PostCard = ({ post, user }: Props) => {
+const PostCard = ({ post, user, curUserName }: Props) => {
+    if (curUserName !== user.username && curUserName !== "") {
+        return;
+    }
+    
     return (
         <Card borderRadius={10}>
             <HStack justifyContent={'space-between'} padding={2}>
