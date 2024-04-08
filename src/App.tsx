@@ -33,7 +33,7 @@ function App() {
 
             <Show above='md'>
                 <GridItem area={"aside"} padding={5}>
-                    <UsersList onClickUser={(userName) => changeCurUser(userName)}></UsersList>
+                    <UsersList selectedUser={curUser} onClickUser={(userName) => changeCurUser(userName)}></UsersList>
                 </GridItem>
             </Show>
 
