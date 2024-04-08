@@ -38,7 +38,7 @@ function App() {
             </Show>
 
             <GridItem area={"main"}>
-                <PostsGrid curUserName={curUser}></PostsGrid>
+                <PostsGrid selectedUser={curUser}></PostsGrid>
             </GridItem>
         </Grid>
     );
