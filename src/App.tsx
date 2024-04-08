@@ -2,6 +2,7 @@ import './App.css'
 import { Grid, GridItem, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import CommentsGrid from './components/PostsGrid';
+import UsersList from './components/UsersList';
 
 function App() {
     return (
@@ -16,7 +17,7 @@ function App() {
 
             <Show above='md'>
                 <GridItem area={"aside"}>
-                    Aside
+                    <UsersList></UsersList>
                 </GridItem>
             </Show>
 
