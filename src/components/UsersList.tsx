@@ -1,10 +1,11 @@
 import useUsers from "../hooks/useUsers"
 
 const UsersList = () => {
-    const { users } = useUsers();
+    const { data } = useUsers();
+
     return (
         <ul>
-        {users.map((user) => (
+        {data.map((user) => (
             <li key={user.id}>{user.username}</li>
         ))}
         </ul>
