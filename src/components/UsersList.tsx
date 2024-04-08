@@ -1,15 +1,23 @@
+import { HStack, List, ListItem, Text } from "@chakra-ui/react";
 import useUsers from "../hooks/useUsers"
+import UserIconList from "./UserIconList";
 
 const UsersList = () => {
-    const { data } = useUsers();
+    const { data: users } = useUsers();
 
     return (
-        <ul>
-        {data.map((user) => (
-            <li key={user.id}>{user.username}</li>
+        <List marginY={"50px"}>
+        {users.map((user) => (
+            <ListItem key={user.id} paddingY={2}>
+                <HStack>
+                    <UserIconList user={user.username}></UserIconList>
+                    <Text>{user.username}</Text>
+                    <Text as={"b"} color={"gray.500"}>{"#" + user.id}</Text>
+                </HStack>
+            </ListItem>
         ))}
-        </ul>
-    )
+        </List>
+    );
 }
 
 export default UsersList

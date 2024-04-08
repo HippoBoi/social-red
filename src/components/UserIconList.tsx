@@ -26,7 +26,6 @@ const UserIconList = ({ user }: Props) => {
     return (
         <>
         <HStack>
-            <Text>{user}</Text>
             <Icon as={userMap[user]} color={'purple.300'}></Icon>
         </HStack>
         </>

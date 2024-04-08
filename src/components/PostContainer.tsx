@@ -7,7 +7,7 @@ interface Props {
 
 const PostContainer = ({ children }: Props) => {
     return (
-        <Box borderRadius={10} width={'300px'} overflow={"hidden"}>{children}</Box>
+        <Box borderRadius={10} overflow={"hidden"}>{children}</Box>
     );
 }
 
