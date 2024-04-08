@@ -1,7 +1,5 @@
 import { Badge, HStack } from '@chakra-ui/react';
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
-import { MdOutlineThumbsUpDown } from "react-icons/md";
-import React from 'react'
 
 interface Props {
     likes: number

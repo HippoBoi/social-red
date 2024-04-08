@@ -11,8 +11,14 @@ interface Props {
     curUserName: string;
 }
 
-const PostCard = ({ post, user, curUserName }: Props) => {
-    if (curUserName !== user.username && curUserName !== "") {
+const defaultUser: User = {
+    id: 0,
+    name: "default",
+    username: "defaultUser"
+}
+
+const PostCard = ({ post, user = defaultUser, curUserName }: Props) => {
+    if (curUserName !== user.username && curUserName !== "...") {
         return;
     }
     

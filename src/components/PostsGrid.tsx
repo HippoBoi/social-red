@@ -1,17 +1,17 @@
 import { SimpleGrid, Text } from '@chakra-ui/react';
-import usePosts from '../hooks/usePosts';
+import usePosts, { Post } from '../hooks/usePosts';
 import PostCard from './PostCard';
-import useUsers from '../hooks/useUsers';
+import useUsers, { User } from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
 import { clamp } from 'framer-motion';
 import { useEffect } from 'react';
 
 interface Props {
-    selectedUser: string;
+    selectedName: string;
 };
 
-const PostsGrid = ({ selectedUser }: Props) => {
-    const { data: posts, error, loading} = usePosts(selectedUser);
+const PostsGrid = ({ selectedName }: Props) => {
+    const { data: posts, error, loading} = usePosts(selectedName);
     const { data: users } = useUsers();
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -42,7 +42,7 @@ const PostsGrid = ({ selectedUser }: Props) => {
                             key={post.id} 
                             post={post} 
                             user={getRandomUser(post.id)}
-                            curUserName={selectedUser}>
+                            curUserName={selectedName}>
                         </PostCard>
                     ))
                 }

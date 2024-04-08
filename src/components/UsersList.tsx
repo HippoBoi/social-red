@@ -15,7 +15,7 @@ const UsersList = ({ selectedUser, onClickUser }: Props) => {
     if (error) return;
 
     return (
-        <List marginY={"50px"}>
+        <List>
         {loading === true && (
             tenUsers.map((skeleton) => (
                 <ListItem key={skeleton} paddingY={2}>

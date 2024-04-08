@@ -4,18 +4,11 @@ import NavBar from './components/NavBar';
 import PostsGrid from './components/PostsGrid';
 import UsersList from './components/UsersList';
 import { useState } from 'react';
+import OrderList from './components/OrderList';
+import { User } from './hooks/useUsers';
 
 function App() {
-    const [curUser, setCurUser] = useState("");
-
-    const changeCurUser = (userName: string) => {
-        if (curUser !== userName) {
-            setCurUser(userName);
-        }
-        else {
-            setCurUser("");
-        }
-    }
+    const [selectedName, setSelectedName] = useState("...");
 
     return (
         <Grid 
@@ -33,12 +26,13 @@ function App() {
 
             <Show above='md'>
                 <GridItem area={"aside"} padding={5}>
-                    <UsersList selectedUser={curUser} onClickUser={(userName) => changeCurUser(userName)}></UsersList>
+                    <UsersList selectedUser={selectedName} onClickUser={(userName) => setSelectedName(userName)}></UsersList>
                 </GridItem>
             </Show>
 
             <GridItem area={"main"}>
-                <PostsGrid selectedUser={curUser}></PostsGrid>
+                <OrderList selectedName={selectedName} onSortCliked={(clickedUser) => setSelectedName(clickedUser)} />
+                <PostsGrid selectedName={selectedName}></PostsGrid>
             </GridItem>
         </Grid>
     );
