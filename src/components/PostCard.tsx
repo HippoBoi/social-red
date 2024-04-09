@@ -1,5 +1,5 @@
 import { Post } from '../hooks/usePosts'
-import { Card, CardBody, HStack, Heading, Image, Text } from '@chakra-ui/react';
+import { Button, Card, CardBody, HStack, Heading, Image, Text } from '@chakra-ui/react';
 import logo from '../assets/Images/KHNLogo.png';
 import { User } from '../hooks/useUsers';
 import UserIconList from './UserIconList';
@@ -18,7 +18,7 @@ const defaultUser: User = {
 }
 
 const PostCard = ({ post, user = defaultUser, curUserName }: Props) => {
-    if (curUserName !== user.username && curUserName !== "...") {
+    if (curUserName !== user.username && curUserName !== "Users") {
         return;
     }
     

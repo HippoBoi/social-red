@@ -1,14 +1,15 @@
 import './App.css'
-import { Grid, GridItem, Show } from '@chakra-ui/react';
+import { Grid, GridItem, HStack, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import PostsGrid from './components/PostsGrid';
 import UsersList from './components/UsersList';
 import { useState } from 'react';
 import OrderList from './components/OrderList';
-import { User } from './hooks/useUsers';
+import SortOrder from './components/SortOrder';
 
 function App() {
-    const [selectedName, setSelectedName] = useState("...");
+    const [selectedName, setSelectedName] = useState("Users");
+    const [ selectedOrder, setSelectedOrder ] = useState("Most Recent");
 
     return (
         <Grid 
@@ -31,7 +32,10 @@ function App() {
             </Show>
 
             <GridItem area={"main"}>
-                <OrderList selectedName={selectedName} onSortCliked={(clickedUser) => setSelectedName(clickedUser)} />
+                <HStack marginX={"30px"} spacing={5}>
+                    <OrderList selectedName={selectedName} onSortCliked={(clickedUser) => setSelectedName(clickedUser)} />
+                    <SortOrder orderSelected={selectedOrder} onClicked={(order) => setSelectedOrder(order)}></SortOrder>
+                </HStack>
                 <PostsGrid selectedName={selectedName}></PostsGrid>
             </GridItem>
         </Grid>

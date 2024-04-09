@@ -3,8 +3,6 @@ import usePosts, { Post } from '../hooks/usePosts';
 import PostCard from './PostCard';
 import useUsers, { User } from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
-import { clamp } from 'framer-motion';
-import { useEffect } from 'react';
 
 interface Props {
     selectedName: string;
@@ -31,7 +29,7 @@ const PostsGrid = ({ selectedName }: Props) => {
     return (
         <>
             {error && <Text>{error}</Text>}
-            <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3}} spacing={5} padding={'70px'}>
+            <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3}} spacing={5} padding={'30px'}>
                 {loading 
                 ? 
                     skeletons.map((skeleton) => (

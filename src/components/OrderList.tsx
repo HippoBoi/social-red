@@ -14,26 +14,23 @@ const OrderList = ({ selectedName, onSortCliked }: Props) => {
     if (error) return null;
 
     return (
-        <VStack>
-            <Text fontSize={"2xl"} as={"b"}>Sort By User</Text>
-            <Menu>
-                <MenuButton
-                    as={Button}
-                    rightIcon={<BsChevronDown />}>
-                        {selectedName}
-                </MenuButton>
-                <MenuList>
-                    <MenuItem onClick={() => onSortCliked("...")}>None</MenuItem>
-                    {users.map((user) => (
-                        <MenuItem 
-                            key={user.id}
-                            onClick={() => onSortCliked(user.username)}>
-                            {user.username}
-                        </MenuItem>
-                    ))}
-                </MenuList>
-            </Menu>
-        </VStack>
+        <Menu>
+            <MenuButton
+                as={Button}
+                rightIcon={<BsChevronDown />}>
+                    {selectedName}
+            </MenuButton>
+            <MenuList>
+                <MenuItem onClick={() => onSortCliked("Users")}>None</MenuItem>
+                {users.map((user) => (
+                    <MenuItem 
+                        key={user.id}
+                        onClick={() => onSortCliked(user.username)}>
+                        {user.username}
+                    </MenuItem>
+                ))}
+            </MenuList>
+        </Menu>
     );
 }
 
