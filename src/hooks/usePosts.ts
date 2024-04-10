@@ -7,6 +7,6 @@ export interface Post {
     body: string;
 };
 
-const usePosts = (selectedUser: string) => useData<Post>("/posts", {params: { selectUser: selectedUser }}, [selectedUser]);
+const usePosts = (selectedUserId: number) => useData<Post>("/posts", {params: { selectedId: selectedUserId }}, [selectedUserId]);
 
 export default usePosts;

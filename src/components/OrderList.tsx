@@ -2,13 +2,14 @@ import { Button, Menu, MenuButton, MenuItem, MenuList, Stack, Text, VStack } fro
 import { useState } from 'react';
 import { BsChevronDown } from "react-icons/bs"
 import useUsers, { User } from '../hooks/useUsers';
+import NameMapped from './NameMapped';
 
 interface Props {
-    selectedName: string;
-    onSortCliked: (clickedUser: string) => void;
+    selectedId: number;
+    onSortCliked: (clickedUser: number) => void;
 }
 
-const OrderList = ({ selectedName, onSortCliked }: Props) => {
+const OrderList = ({ selectedId, onSortCliked }: Props) => {
     const { data: users, error } = useUsers();
 
     if (error) return null;
@@ -18,14 +19,14 @@ const OrderList = ({ selectedName, onSortCliked }: Props) => {
             <MenuButton
                 as={Button}
                 rightIcon={<BsChevronDown />}>
-                    {selectedName}
+                    <NameMapped userId={selectedId}></NameMapped>
             </MenuButton>
             <MenuList>
-                <MenuItem onClick={() => onSortCliked("Users")}>None</MenuItem>
+                <MenuItem onClick={() => onSortCliked(0)}>None</MenuItem>
                 {users.map((user) => (
                     <MenuItem 
                         key={user.id}
-                        onClick={() => onSortCliked(user.username)}>
+                        onClick={() => onSortCliked(user.id)}>
                         {user.username}
                     </MenuItem>
                 ))}

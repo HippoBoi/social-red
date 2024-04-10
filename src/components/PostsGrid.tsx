@@ -5,11 +5,11 @@ import useUsers, { User } from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
 
 interface Props {
-    selectedName: string;
+    selectedId: number;
 };
 
-const PostsGrid = ({ selectedName }: Props) => {
-    const { data: posts, error, loading} = usePosts(selectedName);
+const PostsGrid = ({ selectedId }: Props) => {
+    const { data: posts, error, loading} = usePosts(selectedId);
     const { data: users } = useUsers();
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -39,13 +39,13 @@ const PostsGrid = ({ selectedName }: Props) => {
                         <PostCard 
                             key={post.id} 
                             post={post} 
-                            user={getRandomUser(post.id)}
-                            curUserName={selectedName}>
+                            userId={post.userId}
+                            curUserId={selectedId}>
                         </PostCard>
                     ))
                 }
             </SimpleGrid>
-            <Text fontSize={"4xl"} color='purple.800' as={"em"} padding={"355px"}>You are up to date!</Text>
+            <Text fontSize={"4xl"} color='purple.800' as={"em"} padding={"325px"}>You are up to date!</Text>
         </>
     );
 }

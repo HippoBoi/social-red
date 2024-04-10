@@ -8,7 +8,7 @@ import OrderList from './components/OrderList';
 import SortOrder from './components/SortOrder';
 
 function App() {
-    const [selectedName, setSelectedName] = useState("Users");
+    const [ selectedId, setSelectedId ] = useState(0);
     const [ selectedOrder, setSelectedOrder ] = useState("Most Recent");
 
     return (
@@ -27,16 +27,16 @@ function App() {
 
             <Show above='md'>
                 <GridItem area={"aside"} padding={5}>
-                    <UsersList selectedUser={selectedName} onClickUser={(userName) => setSelectedName(userName)}></UsersList>
+                    <UsersList selectedUserId={selectedId} onClickUser={(userId) => setSelectedId(userId)}></UsersList>
                 </GridItem>
             </Show>
 
             <GridItem area={"main"}>
                 <HStack marginX={"30px"} spacing={5}>
-                    <OrderList selectedName={selectedName} onSortCliked={(clickedUser) => setSelectedName(clickedUser)} />
+                    <OrderList selectedId={selectedId} onSortCliked={(clickedUser) => setSelectedId(clickedUser)} />
                     <SortOrder orderSelected={selectedOrder} onClicked={(order) => setSelectedOrder(order)}></SortOrder>
                 </HStack>
-                <PostsGrid selectedName={selectedName}></PostsGrid>
+                <PostsGrid selectedId={selectedId}></PostsGrid>
             </GridItem>
         </Grid>
     );

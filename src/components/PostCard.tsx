@@ -4,11 +4,12 @@ import logo from '../assets/Images/KHNLogo.png';
 import { User } from '../hooks/useUsers';
 import UserIconList from './UserIconList';
 import LikeRatio from './LikeRatio';
+import NameMapped from './NameMapped';
 
 interface Props {
     post: Post;
-    user: User;
-    curUserName: string;
+    userId: number;
+    curUserId: number;
 }
 
 const defaultUser: User = {
@@ -17,8 +18,8 @@ const defaultUser: User = {
     username: "defaultUser"
 }
 
-const PostCard = ({ post, user = defaultUser, curUserName }: Props) => {
-    if (curUserName !== user.username && curUserName !== "Users") {
+const PostCard = ({ post, userId = 0, curUserId }: Props) => {
+    if (curUserId !== userId && curUserId !== 0) {
         return;
     }
     
@@ -27,8 +28,8 @@ const PostCard = ({ post, user = defaultUser, curUserName }: Props) => {
             <HStack justifyContent={'space-between'} padding={2}>
                 <Image src={logo} boxSize={'40px'}></Image>
                 <HStack>
-                    <Text>{user.username}</Text>
-                    <UserIconList user={user.username}></UserIconList>
+                    <NameMapped userId={userId}></NameMapped>
+                    <UserIconList userId={userId}></UserIconList>
                 </HStack>
                 <Text>{"#" + post.id}</Text>
             </HStack>
@@ -36,7 +37,7 @@ const PostCard = ({ post, user = defaultUser, curUserName }: Props) => {
                 <Heading fontSize={20}>{post.title}</Heading>
             </CardBody>
             <CardBody>
-                <LikeRatio likes={user.id}></LikeRatio>
+                <LikeRatio likes={userId}></LikeRatio>
             </CardBody>
         </Card>
     );

@@ -4,11 +4,11 @@ import UserIconList from "./UserIconList";
 import UserListSkeleton from "./UserListSkeleton";
 
 interface Props {
-    selectedUser: string;
-    onClickUser: (userId: string) => void;
+    selectedUserId: number;
+    onClickUser: (userId: number) => void;
 }
 
-const UsersList = ({ selectedUser, onClickUser }: Props) => {
+const UsersList = ({ selectedUserId, onClickUser }: Props) => {
     const { data: users, loading, error } = useUsers();
     const tenUsers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
@@ -27,11 +27,11 @@ const UsersList = ({ selectedUser, onClickUser }: Props) => {
         {users.map((user) => (
             <ListItem key={user.id} paddingY={2}>
                 <HStack>
-                    <UserIconList user={user.username}></UserIconList>
+                    <UserIconList userId={user.id}></UserIconList>
                     <Button 
-                        onClick={() => onClickUser(user.username)} 
+                        onClick={() => onClickUser(user.id)} 
                         variant={"link"}
-                        fontWeight={user.username === selectedUser ? "bold" : "normal"}>
+                        fontWeight={user.id === selectedUserId ? "bold" : "normal"}>
                         {user.username}
                     </Button>
                     <Text as={"b"} color={"gray.500"}>{"#" + user.id}</Text>
