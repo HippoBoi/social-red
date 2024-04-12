@@ -5,6 +5,7 @@ import { User } from '../hooks/useUsers';
 import UserIconList from './UserIconList';
 import LikeRatio from './LikeRatio';
 import NameMapped from './NameMapped';
+import { clamp } from 'framer-motion';
 
 interface Props {
     post: Post;
@@ -37,7 +38,7 @@ const PostCard = ({ post, userId = 0, curUserId }: Props) => {
                 <Heading fontSize={20}>{post.title}</Heading>
             </CardBody>
             <CardBody>
-                <LikeRatio likes={userId}></LikeRatio>
+                <LikeRatio likes={clamp(0, 10, userId)}></LikeRatio>
             </CardBody>
         </Card>
     );

@@ -3,15 +3,28 @@ import usePosts, { Post } from '../hooks/usePosts';
 import PostCard from './PostCard';
 import useUsers, { User } from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
+import postsService from '../services/posts-service';
+import PostForm from './PostForm';
+import { useEffect, useState } from 'react';
 
 interface Props {
     selectedId: number;
 };
 
 const PostsGrid = ({ selectedId }: Props) => {
-    const { data: posts, error, loading} = usePosts(selectedId);
+    const { data: posts, setData, error, setError, loading} = usePosts(selectedId);
     const { data: users } = useUsers();
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    const onSubmitted = (data: Post) => {
+        postsService.newPost(data)
+            .then(res => {
+                setData([...posts, res.data]);
+            })
+            .catch(err => {
+                setError(err);
+            });
+    }
 
     const randNum = (max: number) => {
         return Math.floor(Math.random() * max);
@@ -28,6 +41,7 @@ const PostsGrid = ({ selectedId }: Props) => {
 
     return (
         <>
+            <PostForm onSubmitted={(data) => onSubmitted(data)}></PostForm>
             {error && <Text>{error}</Text>}
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3}} spacing={5} padding={'30px'}>
                 {loading 

@@ -7,6 +7,8 @@ import { useState } from 'react';
 import OrderList from './components/OrderList';
 import SortOrder from './components/SortOrder';
 import PostForm from './components/PostForm';
+import postsService from './services/posts-service';
+import { Post } from './hooks/usePosts';
 
 function App() {
     const [ selectedId, setSelectedId ] = useState(0);
@@ -33,10 +35,6 @@ function App() {
             </Show>
 
             <GridItem area={"main"}>
-                <Stack padding={"30px"}>
-                    <PostForm></PostForm>
-                </Stack>
-
                 <HStack marginX={"30px"} spacing={5}>
                     <OrderList selectedId={selectedId} onSortCliked={(clickedUser) => setSelectedId(clickedUser)} />
                     <SortOrder orderSelected={selectedOrder} onClicked={(order) => setSelectedOrder(order)}></SortOrder>

@@ -18,7 +18,8 @@ const NameMapped = ({userId}: Props) => {
         7: "Elwyn.Skiles",
         8: "Maxime_Nienow",
         9: "Delphine",
-        10: "Moriah.Stanton"
+        10: "Moriah.Stanton",
+        11: "Unregistered"
     };
     
     return (

@@ -25,7 +25,7 @@ const useData = <T>(endpoint: string, params?: AxiosRequestConfig, deps?: any[])
         return () => { controller.abort() };
     }, deps ? [...deps] : []);
 
-    return({ data, error, loading });
-}
+    return({ data, setData, error, setError, loading });
+};
 
 export default useData;
