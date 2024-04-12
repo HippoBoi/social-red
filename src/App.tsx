@@ -13,6 +13,7 @@ import { Post } from './hooks/usePosts';
 function App() {
     const [ selectedId, setSelectedId ] = useState(0);
     const [ selectedOrder, setSelectedOrder ] = useState("Most Recent");
+    const [ searchMsg, setSearchMsg ] = useState("");
 
     return (
         <Grid 
@@ -25,7 +26,7 @@ function App() {
                 md: "200px 1fr"
             }}>
             <GridItem area={"nav"}>
-                <NavBar></NavBar>
+                <NavBar onSearched={(msg) => setSearchMsg(msg)}></NavBar>
             </GridItem>
 
             <Show above='md'>
@@ -39,7 +40,7 @@ function App() {
                     <OrderList selectedId={selectedId} onSortCliked={(clickedUser) => setSelectedId(clickedUser)} />
                     <SortOrder orderSelected={selectedOrder} onClicked={(order) => setSelectedOrder(order)}></SortOrder>
                 </HStack>
-                <PostsGrid selectedId={selectedId}></PostsGrid>
+                <PostsGrid selectedId={selectedId} searchMsg={searchMsg}></PostsGrid>
             </GridItem>
         </Grid>
     );

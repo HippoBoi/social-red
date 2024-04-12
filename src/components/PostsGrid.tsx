@@ -9,10 +9,11 @@ import { useEffect, useState } from 'react';
 
 interface Props {
     selectedId: number;
+    searchMsg: string;
 };
 
-const PostsGrid = ({ selectedId }: Props) => {
-    const { data: posts, setData, error, setError, loading} = usePosts(selectedId);
+const PostsGrid = ({ selectedId, searchMsg }: Props) => {
+    const { data: posts, setData, error, setError, loading} = usePosts(selectedId, searchMsg);
     const { data: users } = useUsers();
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
