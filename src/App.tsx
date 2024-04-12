@@ -1,11 +1,12 @@
 import './App.css'
-import { Grid, GridItem, HStack, Show } from '@chakra-ui/react';
+import { Grid, GridItem, HStack, Show, Stack, Text } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import PostsGrid from './components/PostsGrid';
 import UsersList from './components/UsersList';
 import { useState } from 'react';
 import OrderList from './components/OrderList';
 import SortOrder from './components/SortOrder';
+import PostForm from './components/PostForm';
 
 function App() {
     const [ selectedId, setSelectedId ] = useState(0);
@@ -32,6 +33,10 @@ function App() {
             </Show>
 
             <GridItem area={"main"}>
+                <Stack padding={"30px"}>
+                    <PostForm></PostForm>
+                </Stack>
+
                 <HStack marginX={"30px"} spacing={5}>
                     <OrderList selectedId={selectedId} onSortCliked={(clickedUser) => setSelectedId(clickedUser)} />
                     <SortOrder orderSelected={selectedOrder} onClicked={(order) => setSelectedOrder(order)}></SortOrder>
