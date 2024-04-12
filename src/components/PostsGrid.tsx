@@ -5,7 +5,6 @@ import useUsers, { User } from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
 import postsService from '../services/posts-service';
 import PostForm from './PostForm';
-import { useEffect, useState } from 'react';
 
 interface Props {
     selectedId: number;
@@ -25,20 +24,11 @@ const PostsGrid = ({ selectedId, searchMsg }: Props) => {
             .catch(err => {
                 setError(err);
             });
-    }
-
-    const randNum = (max: number) => {
-        return Math.floor(Math.random() * max);
     };
 
-    const getRandomUser = (postId: number) => {
-        let newUser = postId;
-        if (newUser > 9) {
-            newUser = randNum(9);
-        }
-
-        return (users[newUser]);
-    };
+    const filteredPosts = searchMsg !== ""
+    ? posts.filter((post) => post.title.includes(searchMsg)) 
+    : [...posts];
 
     return (
         <>
@@ -50,7 +40,7 @@ const PostsGrid = ({ selectedId, searchMsg }: Props) => {
                     skeletons.map((skeleton) => (
                     <PostSkeleton key={skeleton}></PostSkeleton>)) 
                 :
-                    posts.map((post) => (
+                    filteredPosts.map((post) => (
                         <PostCard 
                             key={post.id} 
                             post={post} 
