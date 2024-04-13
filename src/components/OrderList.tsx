@@ -30,6 +30,11 @@ const OrderList = ({ selectedId, onSortCliked }: Props) => {
                         {user.username}
                     </MenuItem>
                 ))}
+                <MenuItem
+                    key={11}
+                    onClick={() => onSortCliked(11)}>
+                    Unregistered
+                </MenuItem>
             </MenuList>
         </Menu>
     );

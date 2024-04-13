@@ -1,14 +1,11 @@
 import './App.css'
-import { Grid, GridItem, HStack, Show, Stack, Text } from '@chakra-ui/react';
+import { Grid, GridItem, HStack, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import PostsGrid from './components/PostsGrid';
 import UsersList from './components/UsersList';
 import { useState } from 'react';
 import OrderList from './components/OrderList';
 import SortOrder from './components/SortOrder';
-import PostForm from './components/PostForm';
-import postsService from './services/posts-service';
-import { Post } from './hooks/usePosts';
 
 function App() {
     const [ selectedId, setSelectedId ] = useState(0);

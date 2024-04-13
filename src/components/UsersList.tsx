@@ -38,6 +38,19 @@ const UsersList = ({ selectedUserId, onClickUser }: Props) => {
                 </HStack>
             </ListItem>
         ))}
+        <ListItem key={11} paddingY={2}>
+            <HStack>
+                <UserIconList userId={11}></UserIconList>
+                <Button 
+                    onClick={() => onClickUser(11)} 
+                    variant={"link"}
+                    fontWeight={selectedUserId === 11 ? "bold" : "normal"}>
+                    {"Unregistered"}
+                </Button>
+                <Text as={"b"} color={"gray.500"}>{"#" + 11}</Text>
+            </HStack>
+        </ListItem>
+
         </List>
     );
 }

@@ -1,7 +1,6 @@
 import { SimpleGrid, Text } from '@chakra-ui/react';
 import usePosts, { Post } from '../hooks/usePosts';
 import PostCard from './PostCard';
-import useUsers, { User } from '../hooks/useUsers';
 import PostSkeleton from './PostSkeleton';
 import postsService from '../services/posts-service';
 import PostForm from './PostForm';
@@ -13,13 +12,12 @@ interface Props {
 
 const PostsGrid = ({ selectedId, searchMsg }: Props) => {
     const { data: posts, setData, error, setError, loading} = usePosts(selectedId, searchMsg);
-    const { data: users } = useUsers();
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     const onSubmitted = (data: Post) => {
         postsService.newPost(data)
             .then(res => {
-                setData([...posts, res.data]);
+                setData([res.data, ...posts]);
             })
             .catch(err => {
                 setError(err);
