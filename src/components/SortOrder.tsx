@@ -17,7 +17,6 @@ const SortOrder = ({ orderSelected, onClicked }: Props) => {
             </MenuButton>
             <MenuList>
                 <MenuItem onClick={() => onClicked("Most Recent")}>Most Recent</MenuItem>
-                <MenuItem onClick={() => onClicked("Most Liked")}>Most Liked</MenuItem>
                 <MenuItem onClick={() => onClicked("Most Popular")}>Most Popular</MenuItem>
             </MenuList>
         </Menu>

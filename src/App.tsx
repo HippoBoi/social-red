@@ -37,7 +37,7 @@ function App() {
                     <OrderList selectedId={selectedId} onSortCliked={(clickedUser) => setSelectedId(clickedUser)} />
                     <SortOrder orderSelected={selectedOrder} onClicked={(order) => setSelectedOrder(order)}></SortOrder>
                 </HStack>
-                <PostsGrid selectedId={selectedId} searchMsg={searchMsg}></PostsGrid>
+                <PostsGrid selectedId={selectedId} selectedOrder={selectedOrder} searchMsg={searchMsg}></PostsGrid>
             </GridItem>
         </Grid>
     );

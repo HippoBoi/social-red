@@ -13,12 +13,6 @@ interface Props {
     curUserId: number;
 }
 
-const defaultUser: User = {
-    id: 0,
-    name: "default",
-    username: "defaultUser"
-}
-
 const PostCard = ({ post, userId = 0, curUserId }: Props) => {
     if (curUserId !== userId && curUserId !== 0) {
         return;

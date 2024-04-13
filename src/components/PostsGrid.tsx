@@ -7,17 +7,18 @@ import PostForm from './PostForm';
 
 interface Props {
     selectedId: number;
+    selectedOrder: string;
     searchMsg: string;
 };
 
-const PostsGrid = ({ selectedId, searchMsg }: Props) => {
+const PostsGrid = ({ selectedId, selectedOrder, searchMsg }: Props) => {
     const { data: posts, setData, error, setError, loading} = usePosts(selectedId, searchMsg);
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     const onSubmitted = (data: Post) => {
         postsService.newPost(data)
             .then(res => {
-                setData([res.data, ...posts]);
+                setData([...posts, res.data]);
             })
             .catch(err => {
                 setError(err);
@@ -25,8 +26,10 @@ const PostsGrid = ({ selectedId, searchMsg }: Props) => {
     };
 
     const filteredPosts = searchMsg !== ""
-    ? posts.filter((post) => post.title.includes(searchMsg)) 
-    : [...posts];
+    ? selectedOrder === "Most Popular"   ? posts.filter((post) => post.title.includes(searchMsg))
+                                        : posts.filter((post) => post.title.includes(searchMsg)).reverse()
+    : selectedOrder === "Most Popular"   ? [...posts]
+                                        : [...posts].reverse();
 
     return (
         <>
@@ -40,8 +43,8 @@ const PostsGrid = ({ selectedId, searchMsg }: Props) => {
                 :
                     filteredPosts.map((post) => (
                         <PostCard 
-                            key={post.id} 
-                            post={post} 
+                            key={post.title} 
+                            post={post}
                             userId={post.userId}
                             curUserId={selectedId}>
                         </PostCard>

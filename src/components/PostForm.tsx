@@ -21,7 +21,7 @@ const PostForm = ({ onSubmitted }: Props) => {
     const [creatingPost, isCreatingPos] = useState(false);
 
     const Submitted = (data: PostFormData) => {
-        const newPost: Post = {userId: 11, id: 0, title: data.msg, body: data.username};
+        const newPost: Post = {userId: 11, id: 200, title: data.msg, body: data.username};
         onSubmitted(newPost);
         isCreatingPos(false);
         reset();
