@@ -1,4 +1,4 @@
-import { Button, HStack, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import { Button, HStack, Input, InputGroup, InputLeftElement, InputRightElement, Text } from '@chakra-ui/react';
 import React, { FormEvent, useRef } from 'react'
 import { BsSearch } from 'react-icons/bs';
 
@@ -15,7 +15,14 @@ const SearchBar = ({ onSearchSubmit }: Props) => {
         if (searchRef.current) {
             onSearchSubmit(searchRef.current.value);
         }
-    }
+    };
+
+    const removeText = () => {
+        if (searchRef.current) {
+            searchRef.current.value = "";
+            onSearchSubmit(searchRef.current.value);
+        }
+    };
 
     return (
         <form onSubmit={(event) => onSearch(event)}>
@@ -24,7 +31,16 @@ const SearchBar = ({ onSearchSubmit }: Props) => {
                 <InputLeftElement>
                     <BsSearch></BsSearch>
                 </InputLeftElement>
+
                 <Input ref={searchRef} variant={"filled"} placeholder='Search posts...'></Input>
+
+                <InputRightElement>
+                    <Button 
+                        bg={"false"}
+                        onClick={removeText}>
+                        <Text fontSize={15} as={"i"}>X</Text>
+                    </Button>
+                </InputRightElement>
             </InputGroup>
 
             <Button type='submit'>
