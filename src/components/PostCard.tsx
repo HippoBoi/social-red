@@ -16,11 +16,7 @@ interface Props {
 
 const PostCard = ({ post, userId = 0, curUserId, children }: Props) => {
     if (curUserId !== userId && curUserId !== 0) {
-        return (
-            <Card>
-                Please wait...
-            </Card>
-        );
+        return ( <></> );
     }
     
     return (
