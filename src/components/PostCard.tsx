@@ -29,7 +29,14 @@ const PostCard = ({ post, userId = 0, curUserId }: Props) => {
                 <Text>{"#" + post.id}</Text>
             </HStack>
             <CardBody>
-                <Heading fontSize={20}>{post.title}</Heading>
+                <Button 
+                    paddingX={0}
+                    variant={"link"}
+                    whiteSpace={"normal"} 
+                    textAlign={"left"} 
+                    fontSize={20}>
+                    {post.title}
+                </Button>
             </CardBody>
             <CardBody>
                 <LikeRatio likes={clamp(0, 10, userId)}></LikeRatio>
