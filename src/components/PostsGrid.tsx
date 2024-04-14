@@ -32,7 +32,7 @@ const PostsGrid = ({ selectedId, selectedOrder, searchMsg }: Props) => {
                                         : [...posts].reverse();
 
     return (
-        <>
+        <div>
             <PostForm onSubmitted={(data) => onSubmitted(data)}></PostForm>
             {error && <Text>{error}</Text>}
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3}} spacing={5} padding={'30px'}>
@@ -47,13 +47,14 @@ const PostsGrid = ({ selectedId, selectedOrder, searchMsg }: Props) => {
                             post={post}
                             userId={post.userId}
                             curUserId={selectedId}>
+                            please work
                         </PostCard>
                     ))
                 }
             </SimpleGrid>
             <Text fontSize={"4xl"} color='purple.800' as={"em"} padding={"325px"}>You are up to date!</Text>
-        </>
+        </div>
     );
 }
 
-export default PostsGrid
+export default PostsGrid;

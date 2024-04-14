@@ -12,7 +12,7 @@ const UsersList = ({ selectedUserId, onClickUser }: Props) => {
     const { data: users, loading, error } = useUsers();
     const tenUsers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-    if (error) return;
+    if (error) return <List></List>;
 
     return (
         <List>

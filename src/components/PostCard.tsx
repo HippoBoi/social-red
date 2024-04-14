@@ -8,14 +8,19 @@ import NameMapped from './NameMapped';
 import { clamp } from 'framer-motion';
 
 interface Props {
+    children: string;
     post: Post;
     userId: number;
     curUserId: number;
 }
 
-const PostCard = ({ post, userId = 0, curUserId }: Props) => {
+const PostCard = ({ post, userId = 0, curUserId, children }: Props) => {
     if (curUserId !== userId && curUserId !== 0) {
-        return;
+        return (
+            <Card>
+                Please wait...
+            </Card>
+        );
     }
     
     return (
